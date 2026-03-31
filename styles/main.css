@@ -43,3 +43,49 @@ footer {
   font-size: 0.85rem;
   color: #7a4a2a;
 }
+/* Main feed */
+main {
+  max-width: 680px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Post cards */
+.post-card {
+  background-color: #fdf6ec;
+  border-left: 4px solid #c8601a;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 4px;
+}
+
+.post-card h2 {
+  margin-bottom: 0.25rem;
+}
+
+.post-card h2 a {
+  color: #c8601a;
+  text-decoration: none;
+}
+
+.post-card h2 a:hover {
+  text-decoration: underline;
+}
+
+.post-date {
+  font-size: 0.85rem;
+  color: #7a4a2a;
+  margin-bottom: 0.75rem;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: #c8601a;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.read-more:hover {
+  text-decoration: underline;
+}
