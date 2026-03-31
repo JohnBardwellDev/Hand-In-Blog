@@ -1,0 +1,45 @@
+/* Base styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f5ecd7;
+  color: #2c1a0e;
+  font-family: Georgia, serif;
+  line-height: 1.7;
+}
+
+/* Header */
+header {
+  background-color: #c8601a;
+  color: #fdf6ec;
+  padding: 2rem;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+nav a {
+  color: #fdf6ec;
+  margin: 0 1rem;
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem;
+  font-size: 0.85rem;
+  color: #7a4a2a;
+}
