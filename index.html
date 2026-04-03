@@ -8,30 +8,156 @@
   </head>
   <body>
     <header>
-      <h1>John Bardwell's Blog</h1>
-      <nav>
-        <a href="#">Archive</a>
-      </nav>
+      <div class="start-btn-wrapper">
+        <h1 onclick="toggleMenu()"><em>John Bardwell's Blog</em></h1>
+        <div class="start-menu" id="startMenu">
+          <div class="start-menu-top">
+            <button onclick="showEmailPopup()" class="menu-top-btn">
+              <img src="images/envelope.jpeg" class="menu-top-icon" /> Email
+            </button>
+            <a
+              href="https://www.instagram.com/johnbardwell.biz"
+              target="_blank"
+              class="menu-top-insta"
+            >
+              <img src="images/instalogo.png" class="menu-top-icon" /> Instagram
+            </a>
+          </div>
+          <div class="start-menu-body">
+            <a href="#" class="start-menu-item">
+              <span class="menu-icon icon-folder"></span>
+              <span>Archive <small>Coming soon</small></span>
+            </a>
+            <a
+              href="https://www.youtube.com/@johnbardwell1371"
+              target="_blank"
+              class="start-menu-item"
+            >
+              <span class="menu-icon icon-yt"></span>
+              <span>Amateur Works <small>YouTube Channel</small></span>
+            </a>
+          </div>
+        </div>
+      </div>
     </header>
 
     <main>
       <article class="post-card">
-        <h2><a href="#">Post Title One</a></h2>
-        <p class="post-date">March 31, 2026</p>
-        <p>This is Blog Post 1</p>
-        <a class="read-more" href="#">Read more →</a>
+        <h2>
+          <a href="blog-posts/html-css.html"
+            >CSS Positioning: Relative, Absolute and Fixed</a
+          >
+        </h2>
+        <div class="post-card-body">
+          <p class="post-date">April 3, 2026</p>
+          <p>
+            A plain language guide to the three most important CSS position
+            values and when to use each one.
+          </p>
+          <a class="read-more" href="blog-posts/html-css.html">Read more</a>
+        </div>
       </article>
 
       <article class="post-card">
-        <h2><a href="#">Post Title Two</a></h2>
-        <p class="post-date">March 31, 2026</p>
-        <p>Blog Post 2</p>
-        <a class="read-more" href="#">Read more →</a>
+        <h2>
+          <a href="#">Post Title One</a>
+        </h2>
+        <div class="post-card-body">
+          <p class="post-date">March 31, 2026</p>
+          <p>This is Blog Post 1</p>
+          <a class="read-more" href="#">Read more</a>
+        </div>
+      </article>
+
+      <article class="post-card">
+        <h2>
+          <a href="#">Post Title Two</a>
+        </h2>
+        <div class="post-card-body">
+          <p class="post-date">March 31, 2026</p>
+          <p>Blog Post 2</p>
+          <a class="read-more" href="#">Read more</a>
+        </div>
       </article>
     </main>
 
     <footer>
-      <p>Used as part of Sprint 1 in 2026 by John Bardwell</p>
+      <p>Used as part of Sprint 2 in 2026 by John Bardwell</p>
     </footer>
+
+    <div class="xp-popup" id="xpPopup">
+      <div class="xp-popup-titlebar">
+        <span>✉ You got my email!</span>
+        <button class="xp-popup-close" onclick="closeEmailPopup()">✕</button>
+      </div>
+      <div class="xp-popup-body">
+        <img src="images/envelope.jpeg" class="xp-popup-icon" />
+        <p>
+          My email is<br /><strong>JohnBardwellOfficial@gmail.com</strong> ! :)
+        </p>
+      </div>
+      <div class="xp-popup-footer">
+        <button class="xp-popup-ok" onclick="closeEmailPopup()">OK</button>
+      </div>
+    </div>
+
+    <script>
+      let isDragging = false
+      let wasDragging = false
+      let offsetX = 0
+      let offsetY = 0
+
+      function toggleMenu() {
+        const menu = document.getElementById('startMenu')
+        menu.classList.toggle('open')
+      }
+
+      function toggleMenu() {
+        const menu = document.getElementById('startMenu')
+        menu.classList.toggle('open')
+      }
+
+      function showEmailPopup() {
+        const popup = document.getElementById('xpPopup')
+        const maxX = window.innerWidth - 300
+        const maxY = window.innerHeight - 200
+        const randomX = Math.floor(Math.random() * maxX)
+        const randomY = Math.floor(Math.random() * maxY)
+        popup.style.left = randomX + 'px'
+        popup.style.top = randomY + 'px'
+        popup.style.display = 'block'
+        const audio = new Audio('sounds/ding.mp3')
+        audio.play()
+      }
+
+      function closeEmailPopup() {
+        document.getElementById('xpPopup').style.display = 'none'
+      }
+
+      const popup = document.getElementById('xpPopup')
+      const titlebar = popup.querySelector('.xp-popup-titlebar')
+
+      titlebar.addEventListener('mousedown', function (e) {
+        isDragging = true
+        offsetX = e.clientX - popup.getBoundingClientRect().left
+        offsetY = e.clientY - popup.getBoundingClientRect().top
+        titlebar.style.cursor = 'grabbing'
+      })
+
+      document.addEventListener('mousemove', function (e) {
+        if (isDragging) {
+          popup.style.left = e.clientX - offsetX + 'px'
+          popup.style.top = e.clientY - offsetY + 'px'
+        }
+      })
+
+      document.addEventListener('mouseup', function () {
+        if (isDragging) {
+          wasDragging = true
+        }
+        isDragging = false
+        titlebar.style.cursor = 'grab'
+      })
+    </script>
   </body>
 </html>
