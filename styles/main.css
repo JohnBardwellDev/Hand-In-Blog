@@ -174,11 +174,11 @@ main {
   margin-bottom: 0.5rem;
 }
 
-.post-card p {
-  color: #000000;
-  font-family: 'VT323', monospace;
-  font-size: 1.3rem;
-  line-height: 1.4;
+.post-card-body .post-date {
+  font-family: 'VT323', monospace !important;
+  font-size: 1.1rem;
+  color: #424242;
+  margin-bottom: 0.5rem;
 }
 
 .start-btn-wrapper {
