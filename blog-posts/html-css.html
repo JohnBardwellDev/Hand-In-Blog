@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSS Positioning — John Bardwell</title>
+    <link href="../styles/main.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header>
+      <h1><em>John Bardwell's Blog</em></h1>
+    </header>
+
+    <main
+      style="
+        max-width: 680px;
+        margin: 2rem auto;
+        padding: 0 1rem;
+        font-family: Tahoma, sans-serif;
+        color: #ffffff;
+      "
+    >
+      <a
+        href="../index.html"
+        style="
+          color: #ffffff;
+          font-family: Tahoma, sans-serif;
+          font-size: 0.85rem;
+        "
+        >← Back to Blog</a
+      >
+
+      <h2 style="margin: 1.5rem 0 0.5rem; font-size: 1.5rem">
+        CSS Positioning: Relative, Absolute and Fixed
+      </h2>
+      <p
+        style="
+          color: rgba(255, 255, 255, 0.6);
+          font-size: 0.85rem;
+          margin-bottom: 2rem;
+        "
+      >
+        April 3, 2026
+      </p>
+
+      <div class="post-card">
+        <div
+          class="post-card-body"
+          style="
+            font-family: Tahoma, sans-serif;
+            font-size: 0.9rem;
+            line-height: 1.7;
+            color: #000000;
+          "
+        >
+          <p>
+            When you build a webpage, every element just stacks on top of each
+            other from top to bottom by default. CSS positioning lets you break
+            out of that and place things exactly where you want them. There are
+            three main values you need to know: relative, absolute, and fixed.
+          </p>
+
+          <h3 style="margin: 1.5rem 0 0.5rem">Relative</h3>
+          <p>
+            Relative positioning moves an element relative to where it would
+            normally sit. Think of it like nudging something out of its usual
+            spot but the space it originally took up is still reserved.
+          </p>
+
+          <pre
+            style="
+              background: #1a1a1a;
+              color: #00ff99;
+              padding: 1rem;
+              font-size: 0.85rem;
+              overflow-x: auto;
+              margin: 1rem 0;
+            "
+          >
+.box {
+  position: relative;
+  top: 20px;
+  left: 10px;
+}</pre
+          >
+
+          <p>
+            This moves the box 20px down and 10px to the right from where it
+            would normally be. Everything else on the page stays put.
+          </p>
+
+          <h3 style="margin: 1.5rem 0 0.5rem">Absolute</h3>
+          <p>
+            Absolute positioning removes the element completely from the normal
+            flow of the page. It gets placed relative to its nearest parent that
+            has a position set on it. If no parent has a position, it uses the
+            whole page.
+          </p>
+
+          <pre
+            style="
+              background: #1a1a1a;
+              color: #00ff99;
+              padding: 1rem;
+              font-size: 0.85rem;
+              overflow-x: auto;
+              margin: 1rem 0;
+            "
+          >
+.parent {
+  position: relative;
+}
+
+.child {
+  position: absolute;
+  top: 0;
+  right: 0;
+}</pre
+          >
+
+          <p>
+            This puts the child element in the top right corner of its parent.
+            Unlike relative, the space the child used to occupy is gone and
+            other elements fill in around it.
+          </p>
+
+          <h3 style="margin: 1.5rem 0 0.5rem">Fixed</h3>
+          <p>
+            Fixed positioning locks an element to the browser window itself. It
+            stays in the same spot even when you scroll. This is how sticky
+            navigation bars and floating buttons work.
+          </p>
+
+          <pre
+            style="
+              background: #1a1a1a;
+              color: #00ff99;
+              padding: 1rem;
+              font-size: 0.85rem;
+              overflow-x: auto;
+              margin: 1rem 0;
+            "
+          >
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+}</pre
+          >
+
+          <p>
+            No matter how far down the page you scroll, this element stays
+            pinned to the top of the screen.
+          </p>
+
+          <h3 style="margin: 1.5rem 0 0.5rem">When to use each one</h3>
+          <p>
+            Use relative when you want to nudge something slightly without
+            affecting the layout around it. Use absolute when you need to place
+            something precisely inside a container, like a badge or a tooltip.
+            Use fixed when you want something to stay visible no matter where
+            the user scrolls, like a header or a back to top button.
+          </p>
+        </div>
+      </div>
+
+      <a
+        href="../index.html"
+        style="
+          display: inline-block;
+          margin-top: 1.5rem;
+          color: #ffffff;
+          font-family: Tahoma, sans-serif;
+          font-size: 0.85rem;
+        "
+        >← Back to Blog</a
+      >
+    </main>
+
+    <footer>
+      <p>Used as part of Sprint 2 in 2026 by John Bardwell</p>
+    </footer>
+  </body>
+</html>
