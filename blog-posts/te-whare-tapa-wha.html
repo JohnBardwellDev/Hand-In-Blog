@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Wellbeing Plan</title>
+    <link href="../styles/main.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header>
+      <div class="start-btn-wrapper">
+        <h1 onclick="toggleMenu()"><em>John Bardwell's Blog</em></h1>
+        <div class="start-menu" id="startMenu">
+          <div class="start-menu-top">
+            <button onclick="showEmailPopup()" class="menu-top-btn">
+              <img src="../images/envelope.jpeg" class="menu-top-icon" /> Email
+            </button>
+            <a
+              href="https://www.instagram.com/johnbardwell.biz"
+              target="_blank"
+              class="menu-top-insta"
+            >
+              <img src="../images/instalogo.png" class="menu-top-icon" />
+              Instagram
+            </a>
+          </div>
+          <div class="start-menu-body">
+            <a href="../index.html" class="start-menu-item">
+              <span class="menu-icon icon-folder"></span>
+              <span>Home</span>
+            </a>
+            <a
+              href="https://www.youtube.com/@johnbardwell1371"
+              target="_blank"
+              class="start-menu-item"
+            >
+              <span class="menu-icon icon-yt"></span>
+              <span>Amateur Works <small>YouTube Channel</small></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <article class="post-card">
+        <div class="post-card-body">
+          <h1>Te Whare Tapa Wha and My Wellbeing</h1>
+          <p>
+            Bootcamp is intense. To avoid burning out I am using the Te Whare
+            Tapa Wha model to build a wellbeing plan. It is a Maori health model
+            developed by Sir Mason Durie that compares health to the four walls
+            of a meeting house. If one wall fails the whole building is
+            compromised. Here is how I am keeping my walls strong.
+          </p>
+
+          <h2>Taha Tinana: Physical Health</h2>
+          <p>
+            For me this starts with fixing my sleep schedule. Coming from years
+            of working late night bar shifts my sleep was completely scattered.
+            Now I need to be sharp during the day to learn code. My plan is to
+            stick to a strict sleep routine and make sure I get outside to walk
+            around Wellington every day instead of sitting at a desk for ten
+            hours straight.
+          </p>
+
+          <h2>Taha Hinengaro: Mental Health</h2>
+          <p>
+            Learning JavaScript is incredibly frustrating at times. My main
+            mental health strategy is to step away from the keyboard when I get
+            stuck instead of brute forcing it. Taking a breather to clear my
+            head is way better than staring at an error message until I get
+            angry.
+          </p>
+
+          <h2>Taha Whanau: Social Health</h2>
+          <p>
+            It is really easy to lock myself in a room to study and completely
+            drop off the map. To keep this wall strong I need to make active
+            time to see my friends. Even just grabbing a coffee or hanging out
+            to watch a movie helps me reset and remember there is a world
+            outside of the code editor.
+          </p>
+
+          <h2>Taha Wairua: Spiritual Health</h2>
+          <p>
+            This does not have to be religious. For me it is about staying
+            connected to why I am doing this bootcamp in the first place. I want
+            to build cool things and eventually transition into the software and
+            gaming industries. Taking time to work on my own creative projects
+            or look at game dev stuff keeps me inspired and grounded in the big
+            picture.
+          </p>
+
+          <br />
+          <a class="read-more" href="../index.html">← Back to Home</a>
+        </div>
+      </article>
+    </main>
+
+    <footer>
+      <p>Used as part of Sprint 4 in 2026 by John Bardwell</p>
+    </footer>
+
+    <div class="xp-popup" id="xpPopup">
+      <div class="xp-popup-titlebar">
+        <span>✉ You got my email!</span>
+        <button class="xp-popup-close" onclick="closeEmailPopup()">✕</button>
+      </div>
+      <div class="xp-popup-body">
+        <img src="../images/envelope.jpeg" class="xp-popup-icon" />
+        <p>
+          My email is<br /><strong>JohnBardwellOfficial@gmail.com</strong> ! :)
+        </p>
+      </div>
+      <div class="xp-popup-footer">
+        <button class="xp-popup-ok" onclick="closeEmailPopup()">OK</button>
+      </div>
+    </div>
+
+    <script>
+      let isDragging = false
+      let wasDragging = false
+      let offsetX = 0
+      let offsetY = 0
+
+      function toggleMenu() {
+        const menu = document.getElementById('startMenu')
+        menu.classList.toggle('open')
+      }
+
+      function showEmailPopup() {
+        const popup = document.getElementById('xpPopup')
+        const maxX = window.innerWidth - 300
+        const maxY = window.innerHeight - 200
+        const randomX = Math.floor(Math.random() * maxX)
+        const randomY = Math.floor(Math.random() * maxY)
+        popup.style.left = randomX + 'px'
+        popup.style.top = randomY + 'px'
+        popup.style.display = 'block'
+        const audio = new Audio('../sounds/ding.mp3')
+        audio.play()
+      }
+
+      function closeEmailPopup() {
+        document.getElementById('xpPopup').style.display = 'none'
+      }
+
+      const popup = document.getElementById('xpPopup')
+      const titlebar = popup.querySelector('.xp-popup-titlebar')
+
+      titlebar.addEventListener('mousedown', function (e) {
+        isDragging = true
+        offsetX = e.clientX - popup.getBoundingClientRect().left
+        offsetY = e.clientY - popup.getBoundingClientRect().top
+        titlebar.style.cursor = 'grabbing'
+      })
+
+      document.addEventListener('mousemove', function (e) {
+        if (isDragging) {
+          popup.style.left = e.clientX - offsetX + 'px'
+          popup.style.top = e.clientY - offsetY + 'px'
+        }
+      })
+
+      document.addEventListener('mouseup', function () {
+        if (isDragging) {
+          wasDragging = true
+        }
+        isDragging = false
+        titlebar.style.cursor = 'grab'
+      })
+    </script>
+  </body>
+</html>
