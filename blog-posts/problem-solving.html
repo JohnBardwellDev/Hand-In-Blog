@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Problem Solving - John Bardwell</title>
+    <link href="../styles/main.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header>
+      <div class="start-btn-wrapper">
+        <h1 onclick="toggleMenu()"><em>John Bardwell's Blog</em></h1>
+        <div class="start-menu" id="startMenu">
+          <div class="start-menu-top">
+            <button onclick="showEmailPopup()" class="menu-top-btn">
+              <img src="../images/envelope.jpeg" class="menu-top-icon" /> Email
+            </button>
+            <a
+              href="https://www.instagram.com/johnbardwell.biz"
+              target="_blank"
+              class="menu-top-insta"
+            >
+              <img src="../images/instalogo.png" class="menu-top-icon" />
+              Instagram
+            </a>
+          </div>
+          <div class="start-menu-body">
+            <a href="../index.html" class="start-menu-item">
+              <span class="menu-icon icon-folder"></span>
+              <span>Home</span>
+            </a>
+            <a
+              href="https://www.youtube.com/@johnbardwell1371"
+              target="_blank"
+              class="start-menu-item"
+            >
+              <span class="menu-icon icon-yt"></span>
+              <span>Amateur Works <small>YouTube Channel</small></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <article class="post-card">
+        <div class="post-card-body">
+          <h1>Problem Solving & The Mental Slump</h1>
+          <p class="post-date">Sprint 4 Reflection</p>
+
+          <section>
+            <h2>Getting Stuck (Literally and Mentally)</h2>
+            <p>
+              I spent far too long staring at "Syntax Errors" during the
+              FlipFlop kata. I’d be cruising along, hit a missing curly bracket
+              <strong>{</strong> or a forgotten return statement, and instead of
+              just fixing it, I’d let it stall me out.
+            </p>
+            <p>
+              But the bigger "stuck" wasn't the code; it was the isolation. I
+              hit a point over the last few weeks where I just stopped reaching
+              out. I was convinced I should be able to grind through it alone,
+              but all that did was turn a one-hour problem into a three-day
+              hurdle.
+            </p>
+          </section>
+
+          <section>
+            <h2>The "Eureka" Moment</h2>
+            <p>
+              My breakthrough didn't come from a specific line of code, but from
+              finally breaking that silence. Realizing that the "15 minute rule"
+              applies to my mental state, not just my terminal. If I’m spiraling
+              for more than 15 minutes, the solution isn't more staring, it’s
+              changing the environment or admitting to someone that I'm stuck.
+            </p>
+          </section>
+
+          <section>
+            <h2>My Problem-Solving Toolkit (Version 2.0)</h2>
+            <p>
+              I’ve had to refine how I handle things when the brain fog rolls
+              in:
+            </p>
+            <ul>
+              <li>
+                <strong>Writing it out in plain English</strong> When I can't
+                think in JavaScript, I stop trying. I just write out the steps
+                in normal words. It’s the only way to find the path forward when
+                the logic feels like a mess.
+              </li>
+
+              <li>
+                <strong>Reading the Red:</strong> I’ve forced myself to actually
+                read the error messages. They aren't insults; they’re
+                directions.
+              </li>
+              <li>
+                <strong>Rubber Ducking (The Silent Version):</strong> Even if I
+                wasn't talking to people, I started talking to the code.
+                Explaining it out loud makes the stupid mistakes (like that
+                missing bracket) jump out at you.
+              </li>
+            </ul>
+          </section>
+
+          <section>
+            <h2>On Asking for Help</h2>
+            <p>
+              I have to be real: I didn't reach out to anyone for weeks. I fell
+              into the trap of thinking that asking for help was a sign that I
+              wasn't cut out for the bootcamp. Looking back at this sprint, I
+              realize that the slump was actually the hardest "bug" to debug.
+            </p>
+            <p>
+              Moving forward into the in-person classes on May 4th, my goal
+              isn't just to be better at JavaScript, it's to be better at not
+              disappearing when things get heavy. The code is easier to fix when
+              you aren't trying to do it in a vacuum.
+            </p>
+          </section>
+
+          <br />
+          <a class="read-more" href="../index.html">← Back to Home</a>
+        </div>
+      </article>
+    </main>
+
+    <footer>
+      <p>Used as part of Sprint 4 in 2026 by John Bardwell</p>
+    </footer>
+
+    <div class="xp-popup" id="xpPopup">
+      <div class="xp-popup-titlebar">
+        <span>✉ You got my email!</span>
+        <button class="xp-popup-close" onclick="closeEmailPopup()">✕</button>
+      </div>
+      <div class="xp-popup-body">
+        <img src="../images/envelope.jpeg" class="xp-popup-icon" />
+        <p>
+          My email is<br /><strong>JohnBardwellOfficial@gmail.com</strong> ! :)
+        </p>
+      </div>
+      <div class="xp-popup-footer">
+        <button class="xp-popup-ok" onclick="closeEmailPopup()">OK</button>
+      </div>
+    </div>
+
+    <script>
+      function toggleMenu() {
+        const menu = document.getElementById('startMenu')
+        menu.classList.toggle('open')
+      }
+
+      function showEmailPopup() {
+        const popup = document.getElementById('xpPopup')
+        const maxX = window.innerWidth - 300
+        const maxY = window.innerHeight - 200
+        const randomX = Math.floor(Math.random() * maxX)
+        const randomY = Math.floor(Math.random() * maxY)
+        popup.style.left = randomX + 'px'
+        popup.style.top = randomY + 'px'
+        popup.style.display = 'block'
+        const audio = new Audio('../sounds/ding.mp3')
+        audio.play()
+      }
+
+      function closeEmailPopup() {
+        document.getElementById('xpPopup').style.display = 'none'
+      }
+
+      // Draggable Logic
+      const popup = document.getElementById('xpPopup')
+      const titlebar = popup.querySelector('.xp-popup-titlebar')
+      let isDragging = false
+      let offsetX, offsetY
+
+      titlebar.addEventListener('mousedown', (e) => {
+        isDragging = true
+        offsetX = e.clientX - popup.getBoundingClientRect().left
+        offsetY = e.clientY - popup.getBoundingClientRect().top
+        titlebar.style.cursor = 'grabbing'
+      })
+
+      document.addEventListener('mousemove', (e) => {
+        if (isDragging) {
+          popup.style.left = e.clientX - offsetX + 'px'
+          popup.style.top = e.clientY - offsetY + 'px'
+        }
+      })
+
+      document.addEventListener('mouseup', () => {
+        isDragging = false
+        titlebar.style.cursor = 'grab'
+      })
+    </script>
+  </body>
+</html>
