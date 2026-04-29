@@ -4,153 +4,247 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JavaScript and the DOM</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        color: #333;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 2rem;
-        background-color: #fafafa;
-      }
-      h1 {
-        font-size: 2.2rem;
-        color: #111;
-        margin-bottom: 2rem;
-      }
-      h2 {
-        font-size: 1.4rem;
-        color: #222;
-        border-bottom: 2px solid #eaeaea;
-        padding-bottom: 0.5rem;
-        margin-top: 2.5rem;
-      }
-      p {
-        font-size: 1.1rem;
-        margin-bottom: 1.5rem;
-      }
-      .code-block {
-        background-color: #2d2d2d;
-        color: #f8f8f2;
-        padding: 1.5rem;
-        border-radius: 8px;
-        font-family: 'Courier New', Courier, monospace;
-        font-size: 1rem;
-        overflow-x: auto;
-        margin-bottom: 1.5rem;
-      }
-      .comment {
-        color: #8b949e;
-      }
-      .keyword {
-        color: #ff7b72;
-      }
-      .string {
-        color: #a5d6ff;
-      }
-    </style>
+    <link href="../styles/main.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
+    <header>
+      <div class="start-btn-wrapper">
+        <h1 onclick="toggleMenu()"><em>John Bardwell's Blog</em></h1>
+        <div class="start-menu" id="startMenu">
+          <div class="start-menu-top">
+            <button onclick="showEmailPopup()" class="menu-top-btn">
+              <img src="../images/envelope.jpeg" class="menu-top-icon" /> Email
+            </button>
+            <a
+              href="https://www.instagram.com/johnbardwell.biz"
+              target="_blank"
+              class="menu-top-insta"
+            >
+              <img src="../images/instalogo.png" class="menu-top-icon" />
+              Instagram
+            </a>
+          </div>
+          <div class="start-menu-body">
+            <a href="../index.html" class="start-menu-item">
+              <span class="menu-icon icon-folder"></span>
+              <span>Home</span>
+            </a>
+            <a
+              href="https://www.youtube.com/@johnbardwell1371"
+              target="_blank"
+              class="start-menu-item"
+            >
+              <span class="menu-icon icon-yt"></span>
+              <span>Amateur Works <small>YouTube Channel</small></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
     <main>
-      <h1>JavaScript and the DOM Explained</h1>
+      <article class="post-card">
+        <div class="post-card-body">
+          <h1>JavaScript and the DOM Explained</h1>
+          <p>
+            Here is my breakdown of the core JavaScript concepts from this
+            sprint. I am keeping it simple and explaining things the way they
+            make sense to me.
+          </p>
 
-      <h2>1. HTML, CSS, and JavaScript</h2>
-      <p>Think of building a website like building a house.</p>
-      <p>
-        HTML is the raw structure. It is the walls, floors, and doors. Without
-        it you just have an empty lot.
-      </p>
-      <p>
-        CSS is the interior design. It is the paint color, the carpet, and the
-        furniture layout. It makes the bare structure look good.
-      </p>
-      <p>
-        JavaScript is the electricity and plumbing. A house looks nice with just
-        HTML and CSS, but JavaScript makes it functional. It is what happens
-        when you flick a light switch or turn on a tap.
-      </p>
+          <h2>1. HTML, CSS, and JavaScript</h2>
+          <p>Think of building a website like building a house.</p>
+          <p>
+            HTML is the raw structure. It is the walls, floors, and doors.
+            Without it you just have an empty lot.
+          </p>
+          <p>
+            CSS is the interior design. It is the paint color, the carpet, and
+            the furniture layout. It makes the bare structure look good.
+          </p>
+          <p>
+            JavaScript is the electricity and plumbing. A house looks nice with
+            just HTML and CSS, but JavaScript makes it functional. It is what
+            happens when you flick a light switch or turn on a tap.
+          </p>
 
-      <h2>2. Control Flow and Loops</h2>
-      <p>
-        Control flow is how a computer makes decisions. Think about doing
-        laundry. If the clothes are dirty, you wash them. If they are clean, you
-        fold them. That is control flow.
-      </p>
-      <p>
-        A loop is just repeating a task until a condition is met. When you are
-        washing a pile of dishes, you do not make a new plan for every single
-        plate. You just run a loop: while there are dishes in the sink, wash the
-        next one.
-      </p>
-      <div class="code-block">
-        <span class="keyword">while</span> (sink.hasDishes ==
-        <span class="keyword">true</span>) {
-        <span class="comment">// Keep doing this until the sink is empty</span>
-        washDish(); }
-      </div>
+          <h2>2. Control Flow and Loops</h2>
+          <p>
+            Control flow is how a computer makes decisions. Think about doing
+            laundry. If the clothes are dirty, you wash them. If they are clean,
+            you fold them. That is control flow.
+          </p>
+          <p>
+            A loop is just repeating a task until a condition is met. When you
+            are washing a pile of dishes, you do not make a new plan for every
+            single plate. You just run a loop: while there are dishes in the
+            sink, wash the next one.
+          </p>
 
-      <h2>3. The DOM</h2>
-      <p>
-        The DOM stands for Document Object Model. It is basically a map of your
-        website that the browser creates when the page loads.
-      </p>
-      <p>
-        JavaScript uses this map to find specific HTML elements and change them
-        on the fly. If you want to change the text on a button when someone
-        clicks it, you do not reload the entire webpage. JavaScript uses the DOM
-        to grab just that one button and update the text instantly.
-      </p>
-      <div class="code-block">
-        <span class="comment"
-          >// Finding a title on the page and changing its text</span
-        >
-        document.getElementById(<span class="string">'mainTitle'</span
-        >).innerHTML = <span class="string">'New Title'</span>;
-      </div>
+          <pre
+            style="
+              background: #2d2d2d;
+              color: #f8f8f2;
+              padding: 1.5rem;
+              border-radius: 8px;
+              overflow-x: auto;
+              margin-bottom: 1.5rem;
+            "
+          ><code>while (sink.hasDishes == true) {
+  // Keep doing this until the sink is empty
+  washDish();
+}</code></pre>
 
-      <h2>4. Arrays and Objects</h2>
-      <p>
-        These are just two different ways to store data in code. The difference
-        is how you find the data later.
-      </p>
-      <p>
-        An Array is a basic list where the order matters. Think of a queue of
-        people at a store. If you want to find someone, you look for their
-        position in the line.
-      </p>
-      <p>
-        An Object is a collection of details where the order does not matter.
-        Think of a contact list in your phone. You do not look for your friend
-        by searching for the 15th person in your phone. You just search directly
-        for their name to get their number.
-      </p>
-      <div class="code-block">
-        <span class="comment">// ARRAY: Accessing by position</span>
-        <span class="keyword">let</span> line = [<span class="string"
-          >'John'</span
-        >, <span class="string">'Sarah'</span>,
-        <span class="string">'Dave'</span>]; console.log(line[0]);
-        <span class="comment">// This gets John</span>
+          <h2>3. The DOM</h2>
+          <p>
+            The DOM stands for Document Object Model. It is basically a map of
+            your website that the browser creates when the page loads.
+          </p>
+          <p>
+            JavaScript uses this map to find specific HTML elements and change
+            them on the fly. If you want to change the text on a button when
+            someone clicks it, you do not reload the entire webpage. JavaScript
+            uses the DOM to grab just that one button and update the text
+            instantly.
+          </p>
 
-        <span class="comment">// OBJECT: Accessing by name</span>
-        <span class="keyword">let</span> phonebook = { John: 123456, Sarah:
-        987654 }; console.log(phonebook.John);
-        <span class="comment">// This gets 123456</span>
-      </div>
+          <pre
+            style="
+              background: #2d2d2d;
+              color: #f8f8f2;
+              padding: 1.5rem;
+              border-radius: 8px;
+              overflow-x: auto;
+              margin-bottom: 1.5rem;
+            "
+          ><code>// Finding a title on the page and changing its text
+document.getElementById('mainTitle').innerHTML = 'New Title';</code></pre>
 
-      <h2>5. Functions</h2>
-      <p>
-        A function is a saved set of instructions. If you have a specific task
-        you need to do all the time, you do not want to write the code out line
-        by line every single time.
-      </p>
-      <p>
-        Instead you pack all those steps into a block, give it a name, and just
-        call that name. It is like a recipe. Once you write down how to bake a
-        cake, you just follow the recipe instead of inventing it from scratch
-        every time you want dessert.
-      </p>
+          <h2>4. Arrays and Objects</h2>
+          <p>
+            These are just two different ways to store data in code. The
+            difference is how you find the data later.
+          </p>
+          <p>
+            An Array is a basic list where the order matters. Think of a queue
+            of people at a store. If you want to find someone, you look for
+            their position in the line.
+          </p>
+          <p>
+            An Object is a collection of details where the order does not
+            matter. Think of a contact list in your phone. You do not look for
+            your friend by searching for the 15th person in your phone. You just
+            search directly for their name to get their number.
+          </p>
+
+          <pre
+            style="
+              background: #2d2d2d;
+              color: #f8f8f2;
+              padding: 1.5rem;
+              border-radius: 8px;
+              overflow-x: auto;
+              margin-bottom: 1.5rem;
+            "
+          ><code>// ARRAY: Accessing by position
+let line = ['John', 'Sarah', 'Dave'];
+console.log(line[0]); // This gets John
+
+// OBJECT: Accessing by name
+let phonebook = { John: 123456, Sarah: 987654 };
+console.log(phonebook.John); // This gets 123456</code></pre>
+
+          <h2>5. Functions</h2>
+          <p>
+            A function is a saved set of instructions. If you have a specific
+            task you need to do all the time, you do not want to write the code
+            out line by line every single time.
+          </p>
+          <p>
+            Instead you pack all those steps into a block, give it a name, and
+            just call that name. It is like a recipe. Once you write down how to
+            bake a cake, you just follow the recipe instead of inventing it from
+            scratch every time you want dessert.
+          </p>
+
+          <br />
+          <a class="read-more" href="../index.html">← Back to Home</a>
+        </div>
+      </article>
     </main>
+
+    <footer>
+      <p>Used as part of Sprint 2 in 2026 by John Bardwell</p>
+    </footer>
+
+    <div class="xp-popup" id="xpPopup">
+      <div class="xp-popup-titlebar">
+        <span>✉ You got my email!</span>
+        <button class="xp-popup-close" onclick="closeEmailPopup()">✕</button>
+      </div>
+      <div class="xp-popup-body">
+        <img src="../images/envelope.jpeg" class="xp-popup-icon" />
+        <p>
+          My email is<br /><strong>JohnBardwellOfficial@gmail.com</strong> ! :)
+        </p>
+      </div>
+      <div class="xp-popup-footer">
+        <button class="xp-popup-ok" onclick="closeEmailPopup()">OK</button>
+      </div>
+    </div>
+
+    <script>
+      let isDragging = false
+      let wasDragging = false
+      let offsetX = 0
+      let offsetY = 0
+
+      function toggleMenu() {
+        const menu = document.getElementById('startMenu')
+        menu.classList.toggle('open')
+      }
+
+      function showEmailPopup() {
+        const popup = document.getElementById('xpPopup')
+        const maxX = window.innerWidth - 300
+        const maxY = window.innerHeight - 200
+        const randomX = Math.floor(Math.random() * maxX)
+        const randomY = Math.floor(Math.random() * maxY)
+        popup.style.left = randomX + 'px'
+        popup.style.top = randomY + 'px'
+        popup.style.display = 'block'
+        const audio = new Audio('../sounds/ding.mp3')
+        audio.play()
+      }
+
+      function closeEmailPopup() {
+        document.getElementById('xpPopup').style.display = 'none'
+      }
+
+      const popup = document.getElementById('xpPopup')
+      const titlebar = popup.querySelector('.xp-popup-titlebar')
+
+      titlebar.addEventListener('mousedown', function (e) {
+        isDragging = true
+        offsetX = e.clientX - popup.getBoundingClientRect().left
+        offsetY = e.clientY - popup.getBoundingClientRect().top
+        titlebar.style.cursor = 'grabbing'
+      })
+
+      document.addEventListener('mousemove', function (e) {
+        if (isDragging) {
+          popup.style.left = e.clientX - offsetX + 'px'
+          popup.style.top = e.clientY - offsetY + 'px'
+        }
+      })
+
+      document.addEventListener('mouseup', function () {
+        if (isDragging) {
+          wasDragging = true
+        }
+        isDragging = false
+        titlebar.style.cursor = 'grab'
+      })
+    </script>
   </body>
 </html>
